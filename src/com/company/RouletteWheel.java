@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.models.Player;
 import com.company.models.PlayerBet;
 
 import java.util.List;
@@ -12,9 +13,17 @@ public class RouletteWheel extends Thread{
         this.stop = true;
     }
 
-    public void addBet(final String player, final String betType, final double betAmount) {
+    public void addBet(final Player player, final String betType, final double betAmount) {
         PlayerBet bet = new PlayerBet(player, betType, betAmount);
         bets.add(bet);
+    }
+
+    public void endRound(){
+        // swap out old bets for new one
+        // run random winning roll
+        // determine winners
+        // print
+        // foreach winning player, playout 
     }
 
     @Override
