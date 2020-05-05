@@ -17,7 +17,7 @@ public class PlayerUtils {
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
                 lines = line.split(" ");
-                Player player = new Player(lines[0], Double.parseDouble(lines[0]), Double.parseDouble(lines[0]));
+                Player player = new Player(lines[0], Double.parseDouble(lines[1]), Double.parseDouble(lines[2]));
                 players.put(lines[0], player);
             }
         } catch (Exception e) {

@@ -17,7 +17,11 @@ public class Main {
                 return;
             }
             lines = line.split(" ");
-            game.addBet(lines[0], lines[0], Double.parseDouble(lines[0]));
+            try {
+                game.addBet(lines[0], lines[1], Double.parseDouble(lines[2]));
+            } catch (Exception e) {
+                System.out.println("There seems to have been an issue reading you bet. Please try again");
+            }
         }
 
     }

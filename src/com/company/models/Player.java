@@ -5,7 +5,7 @@ public class Player {
     private double winTotal;
     private double totalBet;
 
-    public Player(final String Name, final double winTotal, final double totalBet) {
+    public Player(final String name, final double winTotal, final double totalBet) {
         this.name = name;
         this.winTotal = winTotal;
         this.totalBet = totalBet;

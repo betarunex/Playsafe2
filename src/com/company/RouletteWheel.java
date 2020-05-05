@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RouletteWheel extends Thread{
-    private boolean stop = false;
+    private boolean stop;
     private List<PlayerBet> bets;
+
+    public RouletteWheel() {
+        this.bets = new ArrayList<>();
+        this.stop = false;
+    }
 
     public void stopRoulette() {
         this.stop = true;
@@ -35,17 +40,20 @@ public class RouletteWheel extends Thread{
     }
 
     public void endRound(){
+        if(this.bets.isEmpty()){
+            return;
+        }
         final List<PlayerBet> bets = this.bets;
         // handle edge case here
         this.bets = new ArrayList<>();
         int ballnumber = (int) (Math.random()*37);
         double winnings = 0;
-        System.out.format("%25s%15s%10s%15s", "Player", "Bet", "Outcome", "Winnings");
+        System.out.format("%15s%15s%10s%15s\n", "Player", "Bet", "Outcome", "Winnings");
         for (PlayerBet bet : bets) {
             winnings = calculateWinnings(bet.getBetType(), bet.getBetAmount(), ballnumber);
             final boolean win = winnings > 0;
             bet.getPlayer().addWinTotal(winnings);
-            System.out.format("%25s%15d%10s%15d", bet.getPlayer().getName(), bet.getBetAmount(), win? "WIN" : "LOSE", winnings);
+            System.out.format("%15s%15f%10s%15f\n", bet.getPlayer().getName(), bet.getBetAmount(), win? "WIN" : "LOSE", winnings);
         }
     }
 
@@ -57,7 +65,7 @@ public class RouletteWheel extends Thread{
             }
             try {
                 this.sleep(5000);
-                // end betting round
+                endRound();
             } catch (Exception e) {
 
             }
