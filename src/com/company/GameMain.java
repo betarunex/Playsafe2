@@ -13,10 +13,11 @@ public class GameMain {
         this.players = PlayerUtils.loadPlayers();
         this.rouletteWheel = new RouletteWheel();
         this.isRunning = true;
+        startRoulette();
     }
 
-    public void instantiate() {
-        PlayerUtils.loadPlayers();
+    public void startRoulette() {
+        rouletteWheel.start();
     }
 
     public void stopRoulette() {
