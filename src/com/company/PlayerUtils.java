@@ -16,12 +16,17 @@ public class PlayerUtils {
             String[] lines = new String[3];
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
-                lines = line.split(" ");
-                Player player = new Player(lines[0], Double.parseDouble(lines[1]), Double.parseDouble(lines[2]));
+                lines = line.split(",");
+                Player player;
+                if (lines.length==1) {
+                    player = new Player(lines[0]);
+                } else {
+                    player = new Player(lines[0], Double.parseDouble(lines[1]), Double.parseDouble(lines[2]));
+                }
                 players.put(lines[0], player);
             }
         } catch (Exception e) {
-
+            System.out.println("Error loading from file");
         }
         return players;
     }

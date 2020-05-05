@@ -21,6 +21,7 @@ public class RouletteWheel extends Thread{
 
     public void addBet(final Player player, final String betType, final double betAmount) {
         PlayerBet bet = new PlayerBet(player, betType, betAmount);
+        player.addTotalBet(betAmount);
         bets.add(bet);
     }
 
@@ -64,7 +65,7 @@ public class RouletteWheel extends Thread{
                 return;
             }
             try {
-                this.sleep(5000);
+                this.sleep(30000);
                 endRound();
             } catch (Exception e) {
 

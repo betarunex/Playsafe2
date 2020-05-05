@@ -23,12 +23,16 @@ public class Player {
         return winTotal;
     }
 
-    public void addWinTotal(double winTotal) {
+    public void addWinTotal(final double winTotal) {
         this.winTotal += winTotal;
     }
 
     public double getTotalBet() {
         return totalBet;
+    }
+
+    public void addTotalBet(final double betAmount) {
+        this.totalBet += betAmount;
     }
 
 }

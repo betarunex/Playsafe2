@@ -10,19 +10,21 @@ public class Main {
         String line = "";
         String[] lines;
         while(game.isRunning()) {
-            System.out.println("Awaiting new bets");
+            System.out.println("Awaiting new bets. 'p' to printout users totals, 'q' to quit ");
             line = scan.nextLine();
-            if (line == "q") {
+            if ("q".equals(line)) {
                 game.endGame();
                 return;
-            }
-            lines = line.split(" ");
-            try {
-                game.addBet(lines[0], lines[1], Double.parseDouble(lines[2]));
-            } catch (Exception e) {
-                System.out.println("There seems to have been an issue reading you bet. Please try again");
+            } else if ("p".equals(line)) {
+                game.printOutPlayers();
+            } else {
+                lines = line.split(" ");
+                try {
+                    game.addBet(lines[0], lines[1], Double.parseDouble(lines[2]));
+                } catch (Exception e) {
+                    System.out.println("There seems to have been an issue reading your bet. Please try again");
+                }
             }
         }
-
     }
 }
