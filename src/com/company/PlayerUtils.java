@@ -3,15 +3,12 @@ package com.company;
 import com.company.models.Player;
 
 import java.io.File;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class PlayerUtils {
 
-    public static Set<Player> loadPlayers() {
-        Set<Player> players = new HashSet<>();
+    public static Map<String, Player> loadPlayers() {
+        Map<String, Player> players = new HashMap<>();
         try {
             final File file = new File("src/input.txt");
             final Scanner scanner = new Scanner(file);
@@ -21,7 +18,7 @@ public class PlayerUtils {
                 line = scanner.nextLine();
                 lines = line.split(" ");
                 Player player = new Player(lines[0], Double.parseDouble(lines[0]), Double.parseDouble(lines[0]));
-                players.add(player);
+                players.put(lines[0], player);
             }
         } catch (Exception e) {
 
@@ -29,8 +26,7 @@ public class PlayerUtils {
         return players;
     }
 
-    public static Player getPlayer(final Set<Player> players, final String name){
-        Optional<Player> player = players.stream().filter(play -> play.getName() == name).findFirst();
-        return player.isPresent() ? player.get() : null;
+    public static Player getPlayer(final Map<String, Player> players, final String name){
+        return players.get(name);
     }
 }
