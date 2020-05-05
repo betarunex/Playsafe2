@@ -1,11 +1,6 @@
 package com.company;
 
-import com.company.models.Player;
-
-import java.io.File;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Main {
 
@@ -17,10 +12,12 @@ public class Main {
         while(game.isRunning()) {
             System.out.println("Awaiting new bets");
             line = scan.nextLine();
+            if (line == "q") {
+                game.endGame();
+                return;
+            }
             lines = line.split(" ");
             game.addBet(lines[0], lines[0], Double.parseDouble(lines[0]));
-            // main thread take user input
-            // stop game game.endGame();
         }
 
     }
