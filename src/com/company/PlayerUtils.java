@@ -9,9 +9,9 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class PlayerUtils {
-    private static Set<Player> players = new HashSet<>();
 
-    private void instantiatePlayers() {
+    public static Set<Player> loadPlayers() {
+        Set<Player> players = new HashSet<>();
         try {
             final File file = new File("src/input.txt");
             final Scanner scanner = new Scanner(file);
@@ -26,9 +26,10 @@ public class PlayerUtils {
         } catch (Exception e) {
 
         }
+        return players;
     }
 
-    private Player getPlayer(final String name){
+    public static Player getPlayer(final Set<Player> players, final String name){
         Optional<Player> player = players.stream().filter(play -> play.getName() == name).findFirst();
         return player.isPresent() ? player.get() : null;
     }
