@@ -16,7 +16,11 @@ public class GameMain {
         startRoulette();
     }
 
-    public void addBet(final Player player, final String betType, final double betAmount) {
+    public void addBet(final String playerName, final String betType, final double betAmount) {
+        Player player = players.get(playerName);
+        if(player==null) {
+            return;
+        }
         rouletteWheel.addBet(player, betType, betAmount);
     }
 

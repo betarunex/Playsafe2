@@ -23,7 +23,7 @@ public class RouletteWheel extends Thread{
         // run random winning roll
         // determine winners
         // print
-        // foreach winning player, playout 
+        // foreach winning player, payout
     }
 
     @Override
