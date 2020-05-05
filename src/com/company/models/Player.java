@@ -19,23 +19,16 @@ public class Player {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getWinTotal() {
         return winTotal;
     }
 
-    public void setWinTotal(double winTotal) {
-        this.winTotal = winTotal;
+    public void addWinTotal(double winTotal) {
+        this.winTotal += winTotal;
     }
 
     public double getTotalBet() {
         return totalBet;
     }
 
-    public void setTotalBet(double totalBet) {
-        this.totalBet = totalBet;
-    }
 }

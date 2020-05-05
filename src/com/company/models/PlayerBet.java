@@ -10,4 +10,16 @@ public class PlayerBet {
         this.betType = betType;
         this.betAmount = betAmount;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public String getBetType() {
+        return betType;
+    }
+
+    public double getBetAmount() {
+        return betAmount;
+    }
 }
